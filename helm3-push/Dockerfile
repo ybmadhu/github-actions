@@ -5,6 +5,9 @@ RUN apk add --no-cache bash git curl
 ENV XDG_DATA_HOME /root/.local/share
 ENV HELM_HOME ${XDG_DATA_HOME}/helm
 
+# Create repositories config needed by helm-s3 plugin
+RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com
+
 RUN curl -Ls https://github.com/steven-sheehy/helm-s3/releases/download/v0.9.0/helm-s3_0.9.0_linux_amd64.tar.gz -o /tmp/helm-s3.tar.gz \
     && mkdir -p ${HELM_HOME}/plugins/helm-s3 \
     && tar xzf /tmp/helm-s3.tar.gz -C ${HELM_HOME}/plugins/helm-s3 \

@@ -1,0 +1,26 @@
+name: 'Helm Push (Helm 3)'
+description: 'Run Helm Push using Helm 3'
+inputs:
+  bucket:
+    default: ""
+    description: 'Bucket to push to'
+    required: true
+  chart:
+    default: ""
+    description: 'Path to helm chart'
+    required: true
+  version:
+    default: ""
+    description: 'Version to update to'
+    required: false
+  appVersion:
+    default: ""
+    description: 'App Version to update to'
+    required: false
+  dependencyUpdate:
+    default: "false"
+    description: 'Update and download chart dependencies'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

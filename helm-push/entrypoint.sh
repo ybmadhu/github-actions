@@ -14,6 +14,12 @@ then
   ARGS="$ARGS --app-version ${INPUT_APPVERSION}"
 fi
 
+if [ -n $INPUT_DEPENDENCYUPDATE -a $INPUT_DEPENDENCYUPDATE != "false" ]
+then
+  echo "updating dependencies"
+  ARGS="$ARGS --dependency-update"
+fi
+
 helm lint $INPUT_CHART
 helm package $ARGS $INPUT_CHART
 

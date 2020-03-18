@@ -3,7 +3,7 @@ description: 'Run Helm Push'
 inputs:
   bucket:
     default: ""
-    description: 'Bucket to to push to'
+    description: 'Bucket to push to'
     required: true
   chart:
     default: ""
@@ -16,6 +16,10 @@ inputs:
   appVersion:
     default: ""
     description: 'App Version to update to'
+    required: false
+  dependencyUpdate:
+    default: "false"
+    description: 'Update and download chart dependencies'
     required: false
 runs:
   using: 'docker'
